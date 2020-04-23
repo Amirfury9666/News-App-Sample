@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.fury.newsappsample.response.Article" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="4dp"
+        android:onClick="@{model::onItemClick}"
+        android:layout_marginHorizontal="2.5dp"
+        android:layout_marginVertical="2.5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/imageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <ImageView
+                    android:id="@+id/newsImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    app:loadImage="@{model.urlToImage}"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/feed_item_bg"/>
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Amir Fury"
+                android:text="@{model.title}"
+                android:singleLine="true"
+                android:layout_above="@+id/newsDescription"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/app_name"
+                android:layout_below="@+id/imageContainer"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="#212121"
+                android:layout_marginBottom="10dp"
+                android:maxLines="2"
+                android:text="@{model.description}"
+                android:layout_marginTop="5dp"
+                android:id="@+id/newsDescription"/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
